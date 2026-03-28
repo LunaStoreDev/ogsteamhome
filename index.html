@@ -1,0 +1,754 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <title>Welcome to OGSteam</title>
+    <style type="text/css">
+        body, div, h1, h2, h3, h4, h5, p, ul, li, a, form, input, select {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: #4d5645;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+            font-size: 12px;
+            color: #cccccc;
+            line-height: 1.4;
+            text-align: center;
+        }
+        
+        #all {
+            width: 1100px;
+            margin: 0 auto;
+            background: #212121;
+            border-left: 1px solid #3a3a3a;
+            border-right: 1px solid #3a3a3a;
+            text-align: left;
+        }
+        
+        #v4headerBar {
+            background: #2a2a2a;
+            height: 70px;
+            border-bottom: 1px solid #3a3a3a;
+            padding: 0 20px;
+        }
+        
+        #steamLogo {
+            float: left;
+            margin-top: 12px;
+            background: #3a3a3a;
+            width: 105px;
+            height: 54px;
+            text-align: center;
+            line-height: 54px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #ffa042;
+        }
+        
+        #steamText {
+            float: left;
+            margin: 24px 0 0 12px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #cf7d1c;
+            letter-spacing: 2px;
+        }
+        
+        #v4headerLinks {
+            float: left;
+            margin: 28px 0 0 40px;
+        }
+        
+        .v4headerLink, .v4headerLinkActive {
+            font-size: 12px;
+            font-weight: bold;
+            color: #b0bec5;
+            margin: 0 2px;
+            text-decoration: none;
+        }
+        
+        .v4headerLinkActive {
+            color: #ffa042;
+        }
+        
+        .v4headerLink:hover {
+            color: #ffa042;
+            text-decoration: underline;
+        }
+        
+        #v4headerStatusItems {
+            float: right;
+            margin-top: 28px;
+        }
+        
+        .v4loginLink {
+            background: #3a3a3a;
+            padding: 4px 14px;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        #cart_status_row {
+            background: #1a1a1a;
+            border-bottom: 1px solid #3a3a3a;
+            text-align: center;
+            font-size: 10px;
+            color: #8a8a8a;
+            padding: 4px 0;
+        }
+        
+        #col_parent {
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        #col_left {
+            float: left;
+            width: 200px;
+            margin-right: 20px;
+        }
+        
+        #global_area_search {
+            background: #212121;
+            padding: 8px;
+            border: 1px solid #3a3a3a;
+            margin-bottom: 15px;
+        }
+        
+        #searchterm {
+            width: 130px;
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            color: #ccc;
+            padding: 2px;
+            font-size: 11px;
+        }
+        
+        .search-btn {
+            background: #3a3a3a;
+            border: 1px solid #4a4a4a;
+            color: white;
+            padding: 2px 6px;
+            margin-left: 3px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        
+        .block-title {
+            font-size: 14px;
+            background: #2a2a2a;
+            border-bottom: 1px solid #3a3a3a;
+            padding: 5px 0;
+            margin: 15px 0 8px 0;
+            color: #ffa042;
+            font-weight: bold;
+        }
+        
+        .menu-list {
+            list-style: none;
+            margin-left: 10px;
+        }
+        
+        .menu-list li {
+            margin: 4px 0;
+        }
+        
+        .menu-list a {
+            color: #b0bec5;
+            font-size: 11px;
+            text-decoration: none;
+        }
+        
+        .menu-list a:hover {
+            color: #ffa042;
+            text-decoration: underline;
+        }
+        
+        #global_area_install_steam {
+            margin: 20px 0 15px;
+            text-align: center;
+        }
+        
+        .btn-steam {
+            display: inline-block;
+            background: #3a3a3a;
+            padding: 4px 10px;
+            font-weight: bold;
+            color: #fff;
+            font-size: 11px;
+            text-decoration: none;
+        }
+        
+        /* Голубые кнопки */
+        .btn-blue {
+            display: inline-block;
+            background: #2c6e9e;
+            border: 1px solid #4a8abe;
+            padding: 4px 10px;
+            font-weight: bold;
+            color: #fff;
+            font-size: 11px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .btn-blue:hover {
+            background: #3a7eae;
+        }
+        
+        .btn-right {
+            float: right;
+        }
+        
+        #home_area_steam {
+            margin-top: 25px;
+            background: #212121;
+            padding: 12px;
+            border: 1px solid #3a3a3a;
+        }
+        
+        #home_area_steam p {
+            font-size: 11px;
+            margin: 8px 0;
+        }
+        
+        #col_center {
+            float: left;
+            width: 580px;
+            margin-right: 20px;
+        }
+        
+        #home_area_capsule_lrg {
+            background: #212121;
+            border: 1px solid #3a3a3a;
+            margin-bottom: 20px;
+            padding: 5px;
+        }
+        
+        #capsule_large_content {
+            background: #2a2a2a;
+            height: 225px;
+            text-align: center;
+            padding-top: 80px;
+            color: #aaaaaa;
+            font-size: 14px;
+        }
+        
+        .capsule-feature {
+            background: #2a2a2a;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .capsule-feature h3 {
+            color: #ffa042;
+            margin-bottom: 8px;
+        }
+        
+        .home_area_capsule_sm {
+            float: left;
+            width: 135px;
+            margin: 0 12px 15px 0;
+            background: #212121;
+            border: 1px solid #3a3a3a;
+            text-align: center;
+            padding: 6px 4px;
+        }
+        
+        .capsule-img {
+            width: 120px;
+            height: 45px;
+            background: #2a2a2a;
+            margin: 0 auto;
+            line-height: 45px;
+            color: #ffa042;
+            font-weight: bold;
+            font-size: 12px;
+            border: 1px solid #3a3a3a;
+        }
+        
+        .home_area_capsule_sm h5 {
+            font-size: 12px;
+            color: #ffb76b;
+            margin: 6px 0 2px;
+        }
+        
+        .strike {
+            text-decoration: line-through;
+            color: #888;
+        }
+        
+        #global_area_tabs {
+            clear: both;
+            margin-top: 15px;
+        }
+        
+        #main_tab_list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border-bottom: 2px solid #3a3a3a;
+            height: 32px;
+        }
+        
+        #main_tab_list li {
+            float: left;
+            margin-right: 4px;
+            cursor: pointer;
+        }
+        
+        .main_tab_on {
+            background: #212121;
+            border: 1px solid #3a3a3a;
+            border-bottom: none;
+            padding: 6px 16px;
+            font-weight: bold;
+            color: #ffa042;
+        }
+        
+        .main_tab_off {
+            background: #1a1a1a;
+            border: 1px solid #3a3a3a;
+            border-bottom: none;
+            padding: 6px 16px;
+            color: #8a8a8a;
+        }
+        
+        .global_area_tabs_ctn_norm {
+            background: #212121;
+            border: 1px solid #3a3a3a;
+            border-top: none;
+            padding: 15px 10px;
+            min-height: 400px;
+        }
+        
+        .global_area_tabs_item {
+            border-bottom: 1px solid #3a3a3a;
+            padding: 8px 0;
+            overflow: hidden;
+        }
+        
+        .tab-img {
+            float: left;
+            width: 120px;
+            height: 45px;
+            background: #2a2a2a;
+            margin-right: 12px;
+            text-align: center;
+            line-height: 45px;
+            font-weight: bold;
+            color: #ffa042;
+            border: 1px solid #3a3a3a;
+        }
+        
+        .tab-info {
+            float: left;
+            width: 280px;
+        }
+        
+        .tab-info h3 {
+            font-size: 13px;
+            color: #ffb76b;
+            margin-bottom: 3px;
+        }
+        
+        .tab-info p {
+            font-size: 11px;
+            color: #aaaaaa;
+        }
+        
+        .tab-price {
+            float: right;
+            font-weight: bold;
+            color: #ffb76b;
+            text-align: right;
+            margin-right: 10px;
+            line-height: 45px;
+        }
+        
+        .tab-rating {
+            float: right;
+            background: #3a3a3a;
+            padding: 2px 8px;
+            margin-right: 10px;
+            font-weight: bold;
+            line-height: 41px;
+        }
+        
+        #col_right {
+            float: left;
+            width: 220px;
+        }
+        
+        .right-block {
+            background: #212121;
+            border: 1px solid #3a3a3a;
+            margin-bottom: 18px;
+            padding: 12px;
+        }
+        
+        .right-block h2 {
+            font-size: 14px;
+            border-bottom: 1px solid #3a3a3a;
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+            color: #ffa042;
+            font-weight: bold;
+        }
+        
+        .spotlight-img {
+            background: #2a2a2a;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #ffa042;
+            border: 1px solid #3a3a3a;
+        }
+        
+        .news-list, .video-list, .demo-list {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+        
+        .news-list li, .video-list li, .demo-list li {
+            margin: 6px 0;
+        }
+        
+        .news-list a, .video-list a, .demo-list a {
+            color: #aaaaaa;
+            font-size: 11px;
+            text-decoration: none;
+        }
+        
+        .news-list a:hover, .video-list a:hover, .demo-list a:hover {
+            color: #ffa042;
+            text-decoration: underline;
+        }
+        
+        .block-header {
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .block-header h2 {
+            float: left;
+            font-size: 14px;
+            color: #ffa042;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        
+        #footer {
+            background: #1a1a1a;
+            border-top: 2px solid #3a3a3a;
+            padding: 20px;
+            clear: both;
+            font-size: 10px;
+            color: #8a8a8a;
+            overflow: hidden;
+        }
+        
+        #footer_logo {
+            float: left;
+            margin-right: 20px;
+            background: #3a3a3a;
+            width: 80px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            color: #ffa042;
+        }
+        
+        #footer_text {
+            float: left;
+            width: 750px;
+        }
+        
+        #footer_text select {
+            background: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #3a3a3a;
+            margin-bottom: 12px;
+            padding: 3px;
+        }
+        
+        .clearfix {
+            clear: both;
+            height: 1%;
+        }
+        
+        a {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="all">
+    <div id="v4headerBar">
+        <div id="steamLogo">OGSteam</div>
+        
+        <div id="v4headerLinks">
+            <a class="v4headerLinkActive" href="#">Home</a> | 
+            <a class="v4headerLink" href="#">What is OGSteam?</a> | 
+            <a class="v4headerLink" href="#">Community</a> | 
+            <a class="v4headerLink" href="#">News</a> | 
+            <a class="v4headerLink" href="#">Forums</a> | 
+            <a class="v4headerLink" href="#">Support</a> | 
+            <a class="v4headerLink" href="#">Stats</a>
+        </div>
+        <div id="v4headerStatusItems">
+            <a class="v4loginLink" href="#">Login</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div id="cart_status_row">
+        <center>OGSteam Store - thousands of games available now</center>
+    </div>
+
+    <div id="col_parent">
+        <div id="col_left">
+            <div id="global_area_search">
+                <input type="text" id="searchterm" value="search games...">
+                <input type="button" class="search-btn" value="Go" onclick="doSearch();">
+            </div>
+
+            <div class="block-title">Browse Games</div>
+            <ul class="menu-list">
+                <li><a href="#">All Games</a></li>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Adventure</a></li>
+                <li><a href="#">Strategy</a></li>
+                <li><a href="#">RPG</a></li>
+                <li><a href="#">Indie</a></li>
+                <li><a href="#">Racing</a></li>
+                <li><a href="#">Simulation</a></li>
+            </ul>
+
+            <div id="global_area_install_steam">
+                <a href="https://disk.yandex.ru/d/Q2sD6aZZh2HoEQ" class="btn-blue" target="_blank" rel="noopener noreferrer">GET OGSTEAM NOW</a>
+            </div>
+
+            <div class="block-title">Free Stuff</div>
+            <ul class="menu-list">
+                <li><a href="#">Game Demos</a></li>
+                <li><a href="#">Videos Trailers</a></li>
+                <li><a href="#">Game Mods</a></li>
+            </ul>
+
+            <div class="block-title">Steam News</div>
+            <ul class="menu-list">
+                <li><a href="#">All News</a></li>
+                <li><a href="#">Game Releases</a></li>
+            </ul>
+
+            <div class="block-title">Publisher Catalogs</div>
+            <ul class="menu-list">
+                <li><a href="#">Valve</a></li>
+                <li><a href="#">Activision</a></li>
+                <li><a href="#">EA Games</a></li>
+                <li><a href="#">Ubisoft</a></li>
+                <li><a href="#">THQ</a></li>
+                <li><a href="#">SEGA</a></li>
+                <li><a href="#">id Software</a></li>
+            </ul>
+
+            <div id="home_area_steam">
+                <div class="block-header">
+                    <h2>OGSteam Platform</h2>
+                    <a href="#" class="btn-blue btn-right">More</a>
+                </div>
+                <div class="clearfix"></div>
+                <p>Join OGSteam for free and get games delivered straight to your desktop with automatic updates and a massive gaming community.</p>
+            </div>
+        </div>
+
+        <div id="col_center">
+            <div id="home_area_capsule_lrg">
+                <div id="capsule_large_content" class="capsule-feature">
+                    <h3>HALF-LIFE 2 ANNIVERSARY</h3>
+                    <p>Now on OGSteam - The classic returns with enhanced graphics</p>
+                    <p style="margin-top:10px"><strong>$9.99</strong> <span class="strike">$19.99</span></p>
+                    <a href="#" class="btn-blue" style="margin-top:8px; display:inline-block;">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="home_area_capsule_sm">
+                <div class="capsule-img">PORTAL</div>
+                <h5>$4.99</h5>
+                <a href="#" class="btn-blue" style="margin-top:5px; display:inline-block;">Buy</a>
+            </div>
+            <div class="home_area_capsule_sm">
+                <div class="capsule-img">CS 1.6</div>
+                <h5><span class="strike">$9.99</span> $4.99</h5>
+                <a href="#" class="btn-blue" style="margin-top:5px; display:inline-block;">Buy</a>
+            </div>
+            <div class="home_area_capsule_sm">
+                <div class="capsule-img">TEAM FORTRESS 2</div>
+                <h5>FREE</h5>
+                <a href="#" class="btn-blue" style="margin-top:5px; display:inline-block;">Play</a>
+            </div>
+            <div class="home_area_capsule_sm">
+                <div class="capsule-img">DOTA CLASSIC</div>
+                <h5>$0.00</h5>
+                <a href="#" class="btn-blue" style="margin-top:5px; display:inline-block;">Play</a>
+            </div>
+            <div class="clearfix"></div>
+
+            <div id="global_area_tabs">
+                <ul id="main_tab_list">
+                    <li id="tab_1_li" class="main_tab_on" onclick="selectTab(1);">New releases</li>
+                    <li id="tab_2_li" class="main_tab_off" onclick="selectTab(2);">Top Sellers</li>
+                    <li id="tab_3_li" class="main_tab_off" onclick="selectTab(3);">Top Rated</li>
+                    <li id="tab_4_li" class="main_tab_off" onclick="selectTab(4);">Coming soon</li>
+                </ul>
+                <div class="clearfix"></div>
+                <div id="global_area_tabs_ctn" class="global_area_tabs_ctn_norm">
+                    <div id="tab_1_content">
+                        <div class="global_area_tabs_item"><div class="tab-img">NEW</div><div class="tab-info"><h3>Dark Messiah 2007</h3><p>Released: Feb 25, 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">$29.99</a></div><div class="clearfix"></div></div>
+                        <div class="global_area_tabs_item"><div class="tab-img">CS:S</div><div class="tab-info"><h3>Counter-Strike: Source</h3><p>Released: Feb 20, 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">$19.99</a></div><div class="clearfix"></div></div>
+                        <div class="global_area_tabs_item"><div class="tab-img">WITCHER</div><div class="tab-info"><h3>The Witcher</h3><p>Released: Feb 18, 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">$39.99</a></div><div class="clearfix"></div></div>
+                        <div class="global_area_tabs_item"><div class="tab-img">NEED SPEED</div><div class="tab-info"><h3>Need for Speed: Carbon</h3><p>Released: Feb 12, 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">$29.99</a></div><div class="clearfix"></div></div>
+                    </div>
+                    <div id="tab_2_content" style="display: none;">
+                        <div class="global_area_tabs_item"><div class="tab-img">1</div><div class="tab-info"><h3>Half-Life 2</h3></div><div class="tab-rating">96</div><div class="tab-price"><a href="#" class="btn-blue">$9.99</a></div><div class="clearfix"></div></div>
+                        <div class="global_area_tabs_item"><div class="tab-img">2</div><div class="tab-info"><h3>Counter-Strike 1.6</h3></div><div class="tab-rating">94</div><div class="tab-price"><a href="#" class="btn-blue">$4.99</a></div><div class="clearfix"></div></div>
+                        <div class="global_area_tabs_item"><div class="tab-img">3</div><div class="tab-info"><h3>Team Fortress 2</h3></div><div class="tab-rating">92</div><div class="tab-price"><a href="#" class="btn-blue">FREE</a></div><div class="clearfix"></div></div>
+                        <div class="global_area_tabs_item"><div class="tab-img">4</div><div class="tab-info"><h3>Portal</h3></div><div class="tab-rating">95</div><div class="tab-price"><a href="#" class="btn-blue">$4.99</a></div><div class="clearfix"></div></div>
+                    </div>
+                    <div id="tab_3_content" style="display: none;">
+                        <div class="global_area_tabs_item"><div class="tab-img">96</div><div class="tab-info"><h3>Half-Life 2</h3></div><div class="tab-price"><a href="#" class="btn-blue">$9.99</a></div><div class="clearfix"></div></div>
+                        <div class="global_area_tabs_item"><div class="tab-img">95</div><div class="tab-info"><h3>Portal</h3></div><div class="tab-price"><a href="#" class="btn-blue">$4.99</a></div><div class="clearfix"></div></div>
+                        <div class="global_area_tabs_item"><div class="tab-img">94</div><div class="tab-info"><h3>BioShock</h3></div><div class="tab-price"><a href="#" class="btn-blue">$19.99</a></div><div class="clearfix"></div></div>
+                        <div class="global_area_tabs_item"><div class="tab-img">93</div><div class="tab-info"><h3>Company of Heroes</h3></div><div class="tab-price"><a href="#" class="btn-blue">$29.99</a></div><div class="clearfix"></div></div>
+                    </div>
+                    <div id="tab_4_content" style="display: none;">
+                        <div class="global_area_tabs_item"><div class="tab-img">MAR</div><div class="tab-info"><h3>STALKER: Shadow of Chernobyl</h3><p>Coming Mar 20, 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">Pre</a></div><div class="clearfix"></div></div>
+                        <div class="global_area_tabs_item"><div class="tab-img">APR</div><div class="tab-info"><h3>Command and Conquer 3</h3><p>Coming Apr 10, 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">Pre</a></div><div class="clearfix"></div></div>
+                        <div class="global_area_tabs_item"><div class="tab-img">MAY</div><div class="tab-info"><h3>Spider-Man 3</h3><p>Coming May 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">Pre</a></div><div class="clearfix"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:20px">
+                <div class="block-header">
+                    <h2>Gifting on OGSteam</h2>
+                    <a href="#" class="btn-blue btn-right">Learn More</a>
+                </div>
+                <div class="clearfix"></div>
+                <div style="background:#212121; border:1px solid #3a3a3a; padding:12px; margin-top:5px;">
+                    Give the gift of game<br>
+                    Gift purchasing is available on OGSteam. Simply indicate your purchase is a gift during checkout.
+                </div>
+            </div>
+        </div>
+
+        <div id="col_right">
+            <div class="right-block">
+                <div class="block-header">
+                    <h2>Spotlight</h2>
+                    <a href="#" class="btn-blue btn-right">More</a>
+                </div>
+                <div class="clearfix"></div>
+                <div class="spotlight-img">TEAM FORTRESS 2</div>
+                <h3 style="color:#ffb76b;">TF2 - 50% Off</h3>
+                <p>To celebrate the new update, Team Fortress 2 is half-price until Friday!</p>
+                <a href="#" class="btn-blue" style="display:inline-block; margin-top:5px;">Learn more</a>
+            </div>
+
+            <div class="right-block">
+                <div class="block-header">
+                    <h2>OGSteam News</h2>
+                    <a href="#" class="btn-blue btn-right">All</a>
+                </div>
+                <div class="clearfix"></div>
+                <ul class="news-list">
+                    <li><a href="#">Team Fortress 2 Update Released</a></li>
+                    <li><a href="#">Half-Life 2 Episode Two Announced</a></li>
+                    <li><a href="#">Portal 2 Teaser Trailer</a></li>
+                    <li><a href="#">Steam Community Update</a></li>
+                    <li><a href="#">Weekend Deal: Counter-Strike Pack</a></li>
+                </ul>
+            </div>
+
+            <div class="right-block">
+                <div class="block-header">
+                    <h2>Videos Trailers</h2>
+                    <a href="#" class="btn-blue btn-right">More</a>
+                </div>
+                <div class="clearfix"></div>
+                <ul class="video-list">
+                    <li><a href="#">Team Fortress 2 - Meet the Scout</a></li>
+                    <li><a href="#">Portal - Still Alive Trailer</a></li>
+                    <li><a href="#">Half-Life 2 Episode Two Teaser</a></li>
+                    <li><a href="#">Left 4 Dead Announcement</a></li>
+                </ul>
+            </div>
+
+            <div class="right-block">
+                <div class="block-header">
+                    <h2>Demos</h2>
+                    <a href="#" class="btn-blue btn-right">All</a>
+                </div>
+                <div class="clearfix"></div>
+                <ul class="demo-list">
+                    <li><a href="#">Half-Life 2 Demo</a></li>
+                    <li><a href="#">Portal First Slice</a></li>
+                    <li><a href="#">Company of Heroes Demo</a></li>
+                    <li><a href="#">BioShock Demo</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div id="footer">
+        <div id="footer_logo">OGSteam</div>
+        <div id="footer_text">
+            <select onchange="alert('Language changed demo');">
+                <option>English</option>
+                <option>Russian</option>
+                <option>German</option>
+                <option>French</option>
+            </select><br>
+            <p>2007 OGSteam Corporation. All rights reserved. All trademarks are property of their respective owners.</p>
+            <p><a href="#" style="color:#8a8a8a;">Privacy Policy</a> | <a href="#" style="color:#8a8a8a;">Legal</a> | <a href="#" style="color:#8a8a8a;">Subscriber Agreement</a></p>
+            <p>About OGSteam | Business Solutions | Jobs | Cyber Cafes</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function selectTab(selected) {
+        var tabs = [1, 2, 3, 4];
+        for(var i = 0; i < tabs.length; i++) {
+            var tabId = tabs[i];
+            var tabLi = document.getElementById('tab_' + tabId + '_li');
+            var tabContent = document.getElementById('tab_' + tabId + '_content');
+            if(tabId == selected) {
+                tabLi.className = 'main_tab_on';
+                tabContent.style.display = 'block';
+            } else {
+                tabLi.className = 'main_tab_off';
+                tabContent.style.display = 'none';
+            }
+        }
+    }
+    
+    function doSearch() {
+        var term = document.getElementById('searchterm').value;
+        alert('Searching for: ' + term);
+    }
+</script>
+
+</body>
+</html>
