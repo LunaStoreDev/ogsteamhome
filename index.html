@@ -1,8 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to OGSteam</title>
+	<link rel="icon" href="ogsteam_icon.ico" type="image/x-icon">
     <style type="text/css">
         body, div, h1, h2, h3, h4, h5, p, ul, li, a, form, input, select {
             margin: 0;
@@ -181,7 +183,6 @@
             text-decoration: none;
         }
         
-        /* Голубые кнопки */
         .btn-blue {
             display: inline-block;
             background: #2c6e9e;
@@ -192,10 +193,19 @@
             font-size: 11px;
             text-decoration: none;
             cursor: pointer;
+            transition: background 0.1s ease;
         }
         
         .btn-blue:hover {
             background: #3a7eae;
+        }
+        
+        .btn-orange {
+            background: #b85c1a;
+            border-color: #e07c3a;
+        }
+        .btn-orange:hover {
+            background: #cf6f2a;
         }
         
         .btn-right {
@@ -487,6 +497,58 @@
         a {
             outline: none;
         }
+
+        .download-hero {
+            background: linear-gradient(135deg, #1f2a1c, #0f120c);
+            border: 1px solid #ffa042;
+            margin-bottom: 20px;
+            padding: 18px 15px;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.5);
+        }
+        .download-hero h2 {
+            color: #ffb347;
+            font-size: 22px;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .download-hero .dl-buttons {
+            margin: 15px 0 10px;
+        }
+        .dl-buttons .btn-blue {
+            font-size: 14px;
+            padding: 8px 18px;
+            margin: 0 8px;
+            background: #1f6392;
+        }
+        .dl-buttons .btn-blue.offline {
+            background: #5a3e1a;
+            border-color: #b87c2e;
+        }
+        .version-badge {
+            background: #2a2a2a;
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 10px;
+            color: #aaa;
+            margin-top: 8px;
+        }
+        .sysreq {
+            background: #1e1e1e;
+            border-left: 3px solid #ffa042;
+            padding: 6px 12px;
+            margin-top: 12px;
+            text-align: left;
+            font-size: 10px;
+            color: #bcbcbc;
+        }
+        .install-note {
+            font-size: 11px;
+            color: #dddd88;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body>
@@ -511,7 +573,7 @@
     </div>
 
     <div id="cart_status_row">
-        <center>OGSteam Store - thousands of games available now</center>
+        <center>OGSteam Store — thousands of games available now</center>
     </div>
 
     <div id="col_parent">
@@ -534,8 +596,14 @@
             </ul>
 
             <div id="global_area_install_steam">
-                <a href="https://github.com/LunaStoreDev/ogsteamhome/releases/download/3.21/OGSteamSetup.exe" class="btn-blue" target="_blank" rel="noopener noreferrer">GET OGSTEAM NOW</a>
-				<a href="https://disk.yandex.ru/d/uY3KV_UPHQkarQ" class="btn-blue" target="_blank" rel="noopener noreferrer">GET OGSTEAM NOW [OFFLINE]</a>
+                <div style="margin-bottom: 6px; font-weight:bold; color:#ffb76b;">Download OGSteam Client</div>
+                <a href="https://github.com/LunaStoreDev/ogsteamhome/releases/download/3.21/OGSteamSetup.exe" class="btn-blue" target="_blank" rel="noopener noreferrer" style="background:#2c6e9e; width:90%; margin-bottom:8px;">Download OGSteam Setup (Online Installer)</a>
+                <a href="https://disk.yandex.ru/d/uY3KV_UPHQkarQ" class="btn-blue offline" target="_blank" rel="noopener noreferrer" style="background:#5a3e1a; border-color:#b87c2e; width:90%;">Download OGSteam Setup (Offline Installer)</a>
+                <div class="version-badge">Version 3.21 build 1427 | 392.24 MB</div>
+                <div class="sysreq">
+                    <strong>System Requirements:</strong> Windows XP/Vista/7/8/10/11 | 512MB RAM | 200MB HDD
+                </div>
+                <div class="install-note">Fast installation, automatic updates, full store and multiplayer access.</div>
             </div>
 
             <div class="block-title">Free Stuff</div>
@@ -573,10 +641,20 @@
         </div>
 
         <div id="col_center">
+            <div class="download-hero">
+                <h2>OGSteam Client Download</h2>
+                <p>Install OGSteam platform — play thousands of games, chat with friends, join sales!</p>
+                <div class="dl-buttons">
+                    <a href="https://github.com/LunaStoreDev/ogsteamhome/releases/download/3.21/OGSteamSetup.exe" class="btn-blue" target="_blank" rel="noopener noreferrer">Download OGSteam (Online Installer)</a>
+                    <a href="https://disk.yandex.ru/d/uY3KV_UPHQkarQ" class="btn-blue offline" target="_blank" rel="noopener noreferrer">Download OGSteam (Offline Installer)</a>
+                </div>
+                <p style="font-size:10px; margin-top:5px;">* Installer compatible with Windows. After installation, launch OGSteam and log in.</p>
+            </div>
+
             <div id="home_area_capsule_lrg">
                 <div id="capsule_large_content" class="capsule-feature">
-                    <h3>HALF-LIFE 2 ANNIVERSARY</h3>
-                    <p>Now on OGSteam - The classic returns with enhanced graphics</p>
+                    <h3>HALF-LIFE 2: ANNIVERSARY EDITION</h3>
+                    <p>Exclusively on OGSteam — enhanced graphics, developer commentary</p>
                     <p style="margin-top:10px"><strong>$9.99</strong> <span class="strike">$19.99</span></p>
                     <a href="#" class="btn-blue" style="margin-top:8px; display:inline-block;">Buy Now</a>
                 </div>
@@ -714,15 +792,16 @@
     <div id="footer">
         <div id="footer_logo">OGSteam</div>
         <div id="footer_text">
-            <select onchange="alert('Language changed demo');">
+            <select onchange="alert('Language changed (demo)');">
                 <option>English</option>
                 <option>Russian</option>
                 <option>German</option>
                 <option>French</option>
             </select><br>
-            <p>2007 OGSteam Corporation. All rights reserved. All trademarks are property of their respective owners.</p>
+            <p>2007-2025 OGSteam Corporation. All rights reserved. All trademarks are property of their respective owners.</p>
             <p><a href="#" style="color:#8a8a8a;">Privacy Policy</a> | <a href="#" style="color:#8a8a8a;">Legal</a> | <a href="#" style="color:#8a8a8a;">Subscriber Agreement</a></p>
             <p>About OGSteam | Business Solutions | Jobs | Cyber Cafes</p>
+            <p style="margin-top:4px;">OGSteam Client — fast download, secure installation. Join the community!</p>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -747,9 +826,10 @@
     
     function doSearch() {
         var term = document.getElementById('searchterm').value;
-        alert('Searching for: ' + term);
+        if(term.trim() === "" || term === "search games...") term = "Half-Life";
+        alert('OGSteam search: "' + term + '" (demo mode)');
     }
-</script>
 
-</body>
-</html>
+    document.querySelectorAll('.btn-blue').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            if(this.href && (this.href.includes('github.com') || this.href.includes('yandex.ru
