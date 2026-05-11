@@ -1,836 +1,369 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Welcome to OGSteam</title>
-	<link rel="icon" href="ogsteam_icon.ico" type="image/x-icon">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Подключаем локальные CSS -->
+    <link href="css/styles_storev5.css" rel="stylesheet" type="text/css">
+    <link href="css/styles_aboutv5.css" rel="stylesheet" type="text/css">
+    
+    <!-- Подключаем шрифты -->
     <style type="text/css">
-        body, div, h1, h2, h3, h4, h5, p, ul, li, a, form, input, select {
-            margin: 0;
-            padding: 0;
+        @font-face {
+            font-family: 'Motiva Sans';
+            src: url('fonts/MotivaSans-Regular.ttf') format('truetype');
+            font-weight: normal;
         }
-        
-        body {
-            background: #4d5645;
-            font-family: Tahoma, Verdana, Arial, sans-serif;
-            font-size: 12px;
-            color: #cccccc;
-            line-height: 1.4;
-            text-align: center;
-        }
-        
-        #all {
-            width: 1100px;
-            margin: 0 auto;
-            background: #212121;
-            border-left: 1px solid #3a3a3a;
-            border-right: 1px solid #3a3a3a;
-            text-align: left;
-        }
-        
-        #v4headerBar {
-            background: #2a2a2a;
-            height: 70px;
-            border-bottom: 1px solid #3a3a3a;
-            padding: 0 20px;
-        }
-        
-        #steamLogo {
-            float: left;
-            margin-top: 12px;
-            background: #3a3a3a;
-            width: 105px;
-            height: 54px;
-            text-align: center;
-            line-height: 54px;
-            font-weight: bold;
-            font-size: 18px;
-            color: #ffa042;
-        }
-        
-        #steamText {
-            float: left;
-            margin: 24px 0 0 12px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #cf7d1c;
-            letter-spacing: 2px;
-        }
-        
-        #v4headerLinks {
-            float: left;
-            margin: 28px 0 0 40px;
-        }
-        
-        .v4headerLink, .v4headerLinkActive {
-            font-size: 12px;
-            font-weight: bold;
-            color: #b0bec5;
-            margin: 0 2px;
-            text-decoration: none;
-        }
-        
-        .v4headerLinkActive {
-            color: #ffa042;
-        }
-        
-        .v4headerLink:hover {
-            color: #ffa042;
-            text-decoration: underline;
-        }
-        
-        #v4headerStatusItems {
-            float: right;
-            margin-top: 28px;
-        }
-        
-        .v4loginLink {
-            background: #3a3a3a;
-            padding: 4px 14px;
-            color: #fff;
-            text-decoration: none;
-        }
-        
-        #cart_status_row {
-            background: #1a1a1a;
-            border-bottom: 1px solid #3a3a3a;
-            text-align: center;
-            font-size: 10px;
-            color: #8a8a8a;
-            padding: 4px 0;
-        }
-        
-        #col_parent {
-            padding: 20px;
-            overflow: hidden;
-        }
-        
-        #col_left {
-            float: left;
-            width: 200px;
-            margin-right: 20px;
-        }
-        
-        #global_area_search {
-            background: #212121;
-            padding: 8px;
-            border: 1px solid #3a3a3a;
-            margin-bottom: 15px;
-        }
-        
-        #searchterm {
-            width: 130px;
-            background: #2a2a2a;
-            border: 1px solid #3a3a3a;
-            color: #ccc;
-            padding: 2px;
-            font-size: 11px;
-        }
-        
-        .search-btn {
-            background: #3a3a3a;
-            border: 1px solid #4a4a4a;
-            color: white;
-            padding: 2px 6px;
-            margin-left: 3px;
-            cursor: pointer;
-            font-size: 11px;
-        }
-        
-        .block-title {
-            font-size: 14px;
-            background: #2a2a2a;
-            border-bottom: 1px solid #3a3a3a;
-            padding: 5px 0;
-            margin: 15px 0 8px 0;
-            color: #ffa042;
+        @font-face {
+            font-family: 'Motiva Sans';
+            src: url('fonts/MotivaSans-Bold.ttf') format('truetype');
             font-weight: bold;
         }
         
-        .menu-list {
-            list-style: none;
-            margin-left: 10px;
-        }
-        
-        .menu-list li {
-            margin: 4px 0;
-        }
-        
-        .menu-list a {
-            color: #b0bec5;
-            font-size: 11px;
-            text-decoration: none;
-        }
-        
-        .menu-list a:hover {
-            color: #ffa042;
-            text-decoration: underline;
-        }
-        
-        #global_area_install_steam {
-            margin: 20px 0 15px;
-            text-align: center;
-        }
-        
-        .btn-steam {
-            display: inline-block;
-            background: #3a3a3a;
-            padding: 4px 10px;
-            font-weight: bold;
-            color: #fff;
-            font-size: 11px;
-            text-decoration: none;
-        }
-        
-        .btn-blue {
-            display: inline-block;
-            background: #2c6e9e;
-            border: 1px solid #4a8abe;
-            padding: 4px 10px;
-            font-weight: bold;
-            color: #fff;
-            font-size: 11px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background 0.1s ease;
-        }
-        
-        .btn-blue:hover {
-            background: #3a7eae;
-        }
-        
-        .btn-orange {
-            background: #b85c1a;
-            border-color: #e07c3a;
-        }
-        .btn-orange:hover {
-            background: #cf6f2a;
-        }
-        
-        .btn-right {
-            float: right;
-        }
-        
-        #home_area_steam {
-            margin-top: 25px;
-            background: #212121;
-            padding: 12px;
-            border: 1px solid #3a3a3a;
-        }
-        
-        #home_area_steam p {
-            font-size: 11px;
-            margin: 8px 0;
-        }
-        
-        #col_center {
-            float: left;
-            width: 580px;
-            margin-right: 20px;
-        }
-        
-        #home_area_capsule_lrg {
-            background: #212121;
-            border: 1px solid #3a3a3a;
-            margin-bottom: 20px;
-            padding: 5px;
-        }
-        
-        #capsule_large_content {
-            background: #2a2a2a;
-            height: 225px;
-            text-align: center;
-            padding-top: 80px;
-            color: #aaaaaa;
-            font-size: 14px;
-        }
-        
-        .capsule-feature {
-            background: #2a2a2a;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .capsule-feature h3 {
-            color: #ffa042;
-            margin-bottom: 8px;
-        }
-        
-        .home_area_capsule_sm {
-            float: left;
-            width: 135px;
-            margin: 0 12px 15px 0;
-            background: #212121;
-            border: 1px solid #3a3a3a;
-            text-align: center;
-            padding: 6px 4px;
-        }
-        
-        .capsule-img {
-            width: 120px;
-            height: 45px;
-            background: #2a2a2a;
-            margin: 0 auto;
-            line-height: 45px;
-            color: #ffa042;
-            font-weight: bold;
-            font-size: 12px;
-            border: 1px solid #3a3a3a;
-        }
-        
-        .home_area_capsule_sm h5 {
-            font-size: 12px;
-            color: #ffb76b;
-            margin: 6px 0 2px;
-        }
-        
-        .strike {
-            text-decoration: line-through;
-            color: #888;
-        }
-        
-        #global_area_tabs {
-            clear: both;
-            margin-top: 15px;
-        }
-        
-        #main_tab_list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            border-bottom: 2px solid #3a3a3a;
-            height: 32px;
-        }
-        
-        #main_tab_list li {
-            float: left;
-            margin-right: 4px;
-            cursor: pointer;
-        }
-        
-        .main_tab_on {
-            background: #212121;
-            border: 1px solid #3a3a3a;
-            border-bottom: none;
-            padding: 6px 16px;
-            font-weight: bold;
-            color: #ffa042;
-        }
-        
-        .main_tab_off {
-            background: #1a1a1a;
-            border: 1px solid #3a3a3a;
-            border-bottom: none;
-            padding: 6px 16px;
-            color: #8a8a8a;
-        }
-        
-        .global_area_tabs_ctn_norm {
-            background: #212121;
-            border: 1px solid #3a3a3a;
-            border-top: none;
-            padding: 15px 10px;
-            min-height: 400px;
-        }
-        
-        .global_area_tabs_item {
-            border-bottom: 1px solid #3a3a3a;
-            padding: 8px 0;
-            overflow: hidden;
-        }
-        
-        .tab-img {
-            float: left;
-            width: 120px;
-            height: 45px;
-            background: #2a2a2a;
-            margin-right: 12px;
-            text-align: center;
-            line-height: 45px;
-            font-weight: bold;
-            color: #ffa042;
-            border: 1px solid #3a3a3a;
-        }
-        
-        .tab-info {
-            float: left;
-            width: 280px;
-        }
-        
-        .tab-info h3 {
-            font-size: 13px;
-            color: #ffb76b;
-            margin-bottom: 3px;
-        }
-        
-        .tab-info p {
-            font-size: 11px;
-            color: #aaaaaa;
-        }
-        
-        .tab-price {
-            float: right;
-            font-weight: bold;
-            color: #ffb76b;
-            text-align: right;
-            margin-right: 10px;
-            line-height: 45px;
-        }
-        
-        .tab-rating {
-            float: right;
-            background: #3a3a3a;
-            padding: 2px 8px;
-            margin-right: 10px;
-            font-weight: bold;
-            line-height: 41px;
-        }
-        
-        #col_right {
-            float: left;
-            width: 220px;
-        }
-        
-        .right-block {
-            background: #212121;
-            border: 1px solid #3a3a3a;
-            margin-bottom: 18px;
-            padding: 12px;
-        }
-        
-        .right-block h2 {
-            font-size: 14px;
-            border-bottom: 1px solid #3a3a3a;
-            padding-bottom: 5px;
-            margin-bottom: 12px;
-            color: #ffa042;
-            font-weight: bold;
-        }
-        
-        .spotlight-img {
-            background: #2a2a2a;
-            height: 100px;
-            text-align: center;
-            line-height: 100px;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #ffa042;
-            border: 1px solid #3a3a3a;
-        }
-        
-        .news-list, .video-list, .demo-list {
-            list-style: none;
-            margin-bottom: 10px;
-        }
-        
-        .news-list li, .video-list li, .demo-list li {
-            margin: 6px 0;
-        }
-        
-        .news-list a, .video-list a, .demo-list a {
-            color: #aaaaaa;
-            font-size: 11px;
-            text-decoration: none;
-        }
-        
-        .news-list a:hover, .video-list a:hover, .demo-list a:hover {
-            color: #ffa042;
-            text-decoration: underline;
-        }
-        
-        .block-header {
-            overflow: hidden;
-            margin-bottom: 8px;
-        }
-        
-        .block-header h2 {
-            float: left;
-            font-size: 14px;
-            color: #ffa042;
-            font-weight: bold;
-            margin: 0;
-            padding: 0;
-            border: none;
-        }
-        
-        #footer {
-            background: #1a1a1a;
-            border-top: 2px solid #3a3a3a;
-            padding: 20px;
-            clear: both;
-            font-size: 10px;
-            color: #8a8a8a;
-            overflow: hidden;
-        }
-        
-        #footer_logo {
-            float: left;
-            margin-right: 20px;
-            background: #3a3a3a;
-            width: 80px;
-            height: 40px;
-            text-align: center;
-            line-height: 40px;
-            font-weight: bold;
-            color: #ffa042;
-        }
-        
-        #footer_text {
-            float: left;
-            width: 750px;
-        }
-        
-        #footer_text select {
-            background: #2a2a2a;
-            color: #e0e0e0;
-            border: 1px solid #3a3a3a;
-            margin-bottom: 12px;
-            padding: 3px;
-        }
-        
-        .clearfix {
-            clear: both;
-            height: 1%;
+        body, html, div, span, p, a, li, h1, h2, h3, h4, .menuitem {
+            font-family: 'Motiva Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
         }
         
         a {
-            outline: none;
+            cursor: pointer;
+            text-decoration: none;
         }
-
-        .download-hero {
-            background: linear-gradient(135deg, #1f2a1c, #0f120c);
-            border: 1px solid #ffa042;
-            margin-bottom: 20px;
-            padding: 18px 15px;
-            text-align: center;
-            border-radius: 4px;
-            box-shadow: 0 0 8px rgba(0,0,0,0.5);
+        a:hover {
+            text-decoration: underline;
         }
-        .download-hero h2 {
-            color: #ffb347;
-            font-size: 22px;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
-        .download-hero .dl-buttons {
-            margin: 15px 0 10px;
-        }
-        .dl-buttons .btn-blue {
-            font-size: 14px;
-            padding: 8px 18px;
-            margin: 0 8px;
-            background: #1f6392;
-        }
-        .dl-buttons .btn-blue.offline {
-            background: #5a3e1a;
-            border-color: #b87c2e;
-        }
-        .version-badge {
-            background: #2a2a2a;
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 10px;
-            color: #aaa;
-            margin-top: 8px;
-        }
-        .sysreq {
-            background: #1e1e1e;
-            border-left: 3px solid #ffa042;
-            padding: 6px 12px;
-            margin-top: 12px;
-            text-align: left;
-            font-size: 10px;
-            color: #bcbcbc;
-        }
-        .install-note {
-            font-size: 11px;
-            color: #dddd88;
-            margin-top: 8px;
+        
+        .popup_block {
+            display: none;
+            position: absolute;
+            z-index: 100;
         }
     </style>
-</head>
-<body>
-
-<div id="all">
-    <div id="v4headerBar">
-        <div id="steamLogo">OGSteam</div>
-        
-        <div id="v4headerLinks">
-            <a class="v4headerLinkActive" href="#">Home</a> | 
-            <a class="v4headerLink" href="#">What is OGSteam?</a> | 
-            <a class="v4headerLink" href="#">Community</a> | 
-            <a class="v4headerLink" href="#">News</a> | 
-            <a class="v4headerLink" href="#">Forums</a> | 
-            <a class="v4headerLink" href="#">Support</a> | 
-            <a class="v4headerLink" href="#">Stats</a>
-        </div>
-        <div id="v4headerStatusItems">
-            <a class="v4loginLink" href="#">Login</a>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-
-    <div id="cart_status_row">
-        <center>OGSteam Store — thousands of games available now</center>
-    </div>
-
-    <div id="col_parent">
-        <div id="col_left">
-            <div id="global_area_search">
-                <input type="text" id="searchterm" value="search games...">
-                <input type="button" class="search-btn" value="Go" onclick="doSearch();">
-            </div>
-
-            <div class="block-title">Browse Games</div>
-            <ul class="menu-list">
-                <li><a href="#">All Games</a></li>
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Strategy</a></li>
-                <li><a href="#">RPG</a></li>
-                <li><a href="#">Indie</a></li>
-                <li><a href="#">Racing</a></li>
-                <li><a href="#">Simulation</a></li>
-            </ul>
-
-            <div id="global_area_install_steam">
-                <div style="margin-bottom: 6px; font-weight:bold; color:#ffb76b;">Download OGSteam Client</div>
-				<a href="https://disk.yandex.ru/d/XdwlBiPcTzPR0g" class="btn-blue offline" target="_blank" rel="noopener noreferrer" style="background:#5a3e1a; border-color:#b87c2e; width:90%;">Download SteamEmulator</a>
-                <a href="https://disk.yandex.ru/d/fWTRFt_yDZyrkg" class="btn-blue" target="_blank" rel="noopener noreferrer" style="background:#2c6e9e; width:90%; margin-bottom:8px;">Download OGSteam Setup (Online Installer)</a>
-                <a href="https://disk.yandex.ru/d/UfeyMMdrhgdAYg" class="btn-blue offline" target="_blank" rel="noopener noreferrer" style="background:#5a3e1a; border-color:#b87c2e; width:90%;">Download OGSteam Setup (Offline Installer)</a>
-				
-                <div class="version-badge">Version 3.21 build 1427 | 392.24 MB</div>
-                <div class="sysreq">
-                    <strong>System Requirements:</strong> Windows XP/Vista/7/8/10/11 | 512MB RAM | 200MB HDD
-                </div>
-                <div class="install-note">Fast installation, automatic updates, full store and multiplayer access.</div>
-            </div>
-
-            <div class="block-title">Free Stuff</div>
-            <ul class="menu-list">
-                <li><a href="#">Game Demos</a></li>
-                <li><a href="#">Videos Trailers</a></li>
-                <li><a href="#">Game Mods</a></li>
-            </ul>
-
-            <div class="block-title">Steam News</div>
-            <ul class="menu-list">
-                <li><a href="#">All News</a></li>
-                <li><a href="#">Game Releases</a></li>
-            </ul>
-
-            <div class="block-title">Publisher Catalogs</div>
-            <ul class="menu-list">
-                <li><a href="#">Valve</a></li>
-                <li><a href="#">Activision</a></li>
-                <li><a href="#">EA Games</a></li>
-                <li><a href="#">Ubisoft</a></li>
-                <li><a href="#">THQ</a></li>
-                <li><a href="#">SEGA</a></li>
-                <li><a href="#">id Software</a></li>
-            </ul>
-
-            <div id="home_area_steam">
-                <div class="block-header">
-                    <h2>OGSteam Platform</h2>
-                    <a href="#" class="btn-blue btn-right">More</a>
-                </div>
-                <div class="clearfix"></div>
-                <p>Join OGSteam for free and get games delivered straight to your desktop with automatic updates and a massive gaming community.</p>
-            </div>
-        </div>
-
-        <div id="col_center">
-            <div class="download-hero">
-                <h2>OGSteam Client Download</h2>
-                <p>Install OGSteam platform — play thousands of games, chat with friends, join sales!</p>
-                <div class="dl-buttons">
-                    
-                </div>
-                <p style="font-size:10px; margin-top:5px;">* Installer compatible with Windows. After installation, launch OGSteam and log in.</p>
-            </div>
-
-            <div id="home_area_capsule_lrg">
-                <div id="capsule_large_content" class="capsule-feature">
-                    <h3>HALF-LIFE 2: ANNIVERSARY EDITION</h3>
-                    <p>Exclusively on OGSteam — enhanced graphics, developer commentary</p>
-                    <p style="margin-top:10px"><strong>$9.99</strong> <span class="strike">$19.99</span></p>
-                    <a href="#" class="btn-blue" style="margin-top:8px; display:inline-block;">Buy Now</a>
-                </div>
-            </div>
-
-            <div class="home_area_capsule_sm">
-                <div class="capsule-img">PORTAL</div>
-                <h5>$4.99</h5>
-                <a href="#" class="btn-blue" style="margin-top:5px; display:inline-block;">Buy</a>
-            </div>
-            <div class="home_area_capsule_sm">
-                <div class="capsule-img">CS 1.6</div>
-                <h5><span class="strike">$9.99</span> $4.99</h5>
-                <a href="#" class="btn-blue" style="margin-top:5px; display:inline-block;">Buy</a>
-            </div>
-            <div class="home_area_capsule_sm">
-                <div class="capsule-img">TEAM FORTRESS 2</div>
-                <h5>FREE</h5>
-                <a href="#" class="btn-blue" style="margin-top:5px; display:inline-block;">Play</a>
-            </div>
-            <div class="home_area_capsule_sm">
-                <div class="capsule-img">DOTA CLASSIC</div>
-                <h5>$0.00</h5>
-                <a href="#" class="btn-blue" style="margin-top:5px; display:inline-block;">Play</a>
-            </div>
-            <div class="clearfix"></div>
-
-            <div id="global_area_tabs">
-                <ul id="main_tab_list">
-                    <li id="tab_1_li" class="main_tab_on" onclick="selectTab(1);">New releases</li>
-                    <li id="tab_2_li" class="main_tab_off" onclick="selectTab(2);">Top Sellers</li>
-                    <li id="tab_3_li" class="main_tab_off" onclick="selectTab(3);">Top Rated</li>
-                    <li id="tab_4_li" class="main_tab_off" onclick="selectTab(4);">Coming soon</li>
-                </ul>
-                <div class="clearfix"></div>
-                <div id="global_area_tabs_ctn" class="global_area_tabs_ctn_norm">
-                    <div id="tab_1_content">
-                        <div class="global_area_tabs_item"><div class="tab-img">NEW</div><div class="tab-info"><h3>Dark Messiah 2007</h3><p>Released: Feb 25, 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">$29.99</a></div><div class="clearfix"></div></div>
-                        <div class="global_area_tabs_item"><div class="tab-img">CS:S</div><div class="tab-info"><h3>Counter-Strike: Source</h3><p>Released: Feb 20, 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">$19.99</a></div><div class="clearfix"></div></div>
-                        <div class="global_area_tabs_item"><div class="tab-img">WITCHER</div><div class="tab-info"><h3>The Witcher</h3><p>Released: Feb 18, 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">$39.99</a></div><div class="clearfix"></div></div>
-                        <div class="global_area_tabs_item"><div class="tab-img">NEED SPEED</div><div class="tab-info"><h3>Need for Speed: Carbon</h3><p>Released: Feb 12, 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">$29.99</a></div><div class="clearfix"></div></div>
-                    </div>
-                    <div id="tab_2_content" style="display: none;">
-                        <div class="global_area_tabs_item"><div class="tab-img">1</div><div class="tab-info"><h3>Half-Life 2</h3></div><div class="tab-rating">96</div><div class="tab-price"><a href="#" class="btn-blue">$9.99</a></div><div class="clearfix"></div></div>
-                        <div class="global_area_tabs_item"><div class="tab-img">2</div><div class="tab-info"><h3>Counter-Strike 1.6</h3></div><div class="tab-rating">94</div><div class="tab-price"><a href="#" class="btn-blue">$4.99</a></div><div class="clearfix"></div></div>
-                        <div class="global_area_tabs_item"><div class="tab-img">3</div><div class="tab-info"><h3>Team Fortress 2</h3></div><div class="tab-rating">92</div><div class="tab-price"><a href="#" class="btn-blue">FREE</a></div><div class="clearfix"></div></div>
-                        <div class="global_area_tabs_item"><div class="tab-img">4</div><div class="tab-info"><h3>Portal</h3></div><div class="tab-rating">95</div><div class="tab-price"><a href="#" class="btn-blue">$4.99</a></div><div class="clearfix"></div></div>
-                    </div>
-                    <div id="tab_3_content" style="display: none;">
-                        <div class="global_area_tabs_item"><div class="tab-img">96</div><div class="tab-info"><h3>Half-Life 2</h3></div><div class="tab-price"><a href="#" class="btn-blue">$9.99</a></div><div class="clearfix"></div></div>
-                        <div class="global_area_tabs_item"><div class="tab-img">95</div><div class="tab-info"><h3>Portal</h3></div><div class="tab-price"><a href="#" class="btn-blue">$4.99</a></div><div class="clearfix"></div></div>
-                        <div class="global_area_tabs_item"><div class="tab-img">94</div><div class="tab-info"><h3>BioShock</h3></div><div class="tab-price"><a href="#" class="btn-blue">$19.99</a></div><div class="clearfix"></div></div>
-                        <div class="global_area_tabs_item"><div class="tab-img">93</div><div class="tab-info"><h3>Company of Heroes</h3></div><div class="tab-price"><a href="#" class="btn-blue">$29.99</a></div><div class="clearfix"></div></div>
-                    </div>
-                    <div id="tab_4_content" style="display: none;">
-                        <div class="global_area_tabs_item"><div class="tab-img">MAR</div><div class="tab-info"><h3>STALKER: Shadow of Chernobyl</h3><p>Coming Mar 20, 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">Pre</a></div><div class="clearfix"></div></div>
-                        <div class="global_area_tabs_item"><div class="tab-img">APR</div><div class="tab-info"><h3>Command and Conquer 3</h3><p>Coming Apr 10, 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">Pre</a></div><div class="clearfix"></div></div>
-                        <div class="global_area_tabs_item"><div class="tab-img">MAY</div><div class="tab-info"><h3>Spider-Man 3</h3><p>Coming May 2007</p></div><div class="tab-price"><a href="#" class="btn-blue">Pre</a></div><div class="clearfix"></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top:20px">
-                <div class="block-header">
-                    <h2>Gifting on OGSteam</h2>
-                    <a href="#" class="btn-blue btn-right">Learn More</a>
-                </div>
-                <div class="clearfix"></div>
-                <div style="background:#212121; border:1px solid #3a3a3a; padding:12px; margin-top:5px;">
-                    Give the gift of game<br>
-                    Gift purchasing is available on OGSteam. Simply indicate your purchase is a gift during checkout.
-                </div>
-            </div>
-        </div>
-
-        <div id="col_right">
-            <div class="right-block">
-                <div class="block-header">
-                    <h2>Spotlight</h2>
-                    <a href="#" class="btn-blue btn-right">More</a>
-                </div>
-                <div class="clearfix"></div>
-                <div class="spotlight-img">TEAM FORTRESS 2</div>
-                <h3 style="color:#ffb76b;">TF2 - 50% Off</h3>
-                <p>To celebrate the new update, Team Fortress 2 is half-price until Friday!</p>
-                <a href="#" class="btn-blue" style="display:inline-block; margin-top:5px;">Learn more</a>
-            </div>
-
-            <div class="right-block">
-                <div class="block-header">
-                    <h2>OGSteam News</h2>
-                    <a href="#" class="btn-blue btn-right">All</a>
-                </div>
-                <div class="clearfix"></div>
-                <ul class="news-list">
-                    <li><a href="#">Team Fortress 2 Update Released</a></li>
-                    <li><a href="#">Half-Life 2 Episode Two Announced</a></li>
-                    <li><a href="#">Portal 2 Teaser Trailer</a></li>
-                    <li><a href="#">Steam Community Update</a></li>
-                    <li><a href="#">Weekend Deal: Counter-Strike Pack</a></li>
-                </ul>
-            </div>
-
-            <div class="right-block">
-                <div class="block-header">
-                    <h2>Videos Trailers</h2>
-                    <a href="#" class="btn-blue btn-right">More</a>
-                </div>
-                <div class="clearfix"></div>
-                <ul class="video-list">
-                    <li><a href="#">Team Fortress 2 - Meet the Scout</a></li>
-                    <li><a href="#">Portal - Still Alive Trailer</a></li>
-                    <li><a href="#">Half-Life 2 Episode Two Teaser</a></li>
-                    <li><a href="#">Left 4 Dead Announcement</a></li>
-                </ul>
-            </div>
-
-            <div class="right-block">
-                <div class="block-header">
-                    <h2>Demos</h2>
-                    <a href="#" class="btn-blue btn-right">All</a>
-                </div>
-                <div class="clearfix"></div>
-                <ul class="demo-list">
-                    <li><a href="#">Half-Life 2 Demo</a></li>
-                    <li><a href="#">Portal First Slice</a></li>
-                    <li><a href="#">Company of Heroes Demo</a></li>
-                    <li><a href="#">BioShock Demo</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-
-    <div id="footer">
-        <div id="footer_logo">OGSteam</div>
-        <div id="footer_text">
-            <select onchange="alert('Language changed (demo)');">
-                <option>English</option>
-                <option>Russian</option>
-                <option>German</option>
-                <option>French</option>
-            </select><br>
-            <p>2007-2025 OGSteam Corporation. All rights reserved. All trademarks are property of their respective owners.</p>
-            <p><a href="#" style="color:#8a8a8a;">Privacy Policy</a> | <a href="#" style="color:#8a8a8a;">Legal</a> | <a href="#" style="color:#8a8a8a;">Subscriber Agreement</a></p>
-            <p>About OGSteam | Business Solutions | Jobs | Cyber Cafes</p>
-            <p style="margin-top:4px;">OGSteam Client — fast download, secure installation. Join the community!</p>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
-
-<script type="text/javascript">
-    function selectTab(selected) {
-        var tabs = [1, 2, 3, 4];
-        for(var i = 0; i < tabs.length; i++) {
-            var tabId = tabs[i];
-            var tabLi = document.getElementById('tab_' + tabId + '_li');
-            var tabContent = document.getElementById('tab_' + tabId + '_content');
-            if(tabId == selected) {
-                tabLi.className = 'main_tab_on';
-                tabContent.style.display = 'block';
-            } else {
-                tabLi.className = 'main_tab_off';
-                tabContent.style.display = 'none';
+    
+    <!-- Подключаем локальные JS -->
+    <script type="text/javascript" src="js/prototype-1.7.js"></script>
+    <script type="text/javascript" src="js/scriptaculous.js"></script>
+    <script type="text/javascript" src="js/javascript.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="js/tooltip.js"></script>
+    
+    <script type="text/javascript">
+        // Функции для меню
+        function ShowMenu(element, menuId, position) {
+            var menu = document.getElementById(menuId);
+            if (menu) {
+                menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
             }
         }
-    }
-    
-    function doSearch() {
-        var term = document.getElementById('searchterm').value;
-        if(term.trim() === "" || term === "search games...") term = "Half-Life";
-        alert('OGSteam search: "' + term + '" (demo mode)');
-    }
+        
+        function RegisterFlyout(elementId, menuId, a, b, c) {
+            var el = document.getElementById(elementId);
+            var menu = document.getElementById(menuId);
+            if (el && menu) {
+                el.onmouseover = function() { menu.style.display = 'block'; };
+                el.onmouseout = function() { menu.style.display = 'none'; };
+            }
+        }
+        
+        function $(id) { return document.getElementById(id); }
+        function $$(selector) { return document.querySelectorAll(selector); }
+        
+        var g_SteamID = 0;
+        var g_ServerTime = 1361991000;
+        
+        // БЛОКИРУЕМ ВСЕ ССЫЛКИ, КРОМЕ КНОПОК УСТАНОВКИ
+        document.addEventListener('click', function(e) {
+            var target = e.target;
+            while (target && target.tagName !== 'A') {
+                target = target.parentElement;
+            }
+            if (target && target.tagName === 'A') {
+                // Проверяем, является ли ссылка кнопкой установки
+                var isInstallBtn = false;
+                
+                // Проверяем по id
+                if (target.id === 'about_install_steam_link') {
+                    isInstallBtn = true;
+                }
+                // Проверяем по классу
+                if (target.className && target.className.indexOf('header_installsteam_btn_content') !== -1) {
+                    isInstallBtn = true;
+                }
+                // Проверяем по атрибуту data-install
+                if (target.getAttribute('data-install') === 'true') {
+                    isInstallBtn = true;
+                }
+                
+                // Если это кнопка установки - разрешаем переход на Яндекс.Диск
+                if (isInstallBtn) {
+                    target.href = 'https://disk.yandex.ru/d/fWTRFt_yDZyrkg';
+                    target.target = '_blank'; // Открываем в новой вкладке
+                    return true;
+                }
+                
+                // Иначе блокируем
+                e.preventDefault();
+                return false;
+            }
+        }, true);
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            var popups = document.querySelectorAll('.popup_block');
+            for (var i = 0; i < popups.length; i++) {
+                popups[i].style.display = 'none';
+            }
+            
+            // Перенаправляем ВСЕ кнопки установки на Яндекс.Диск
+            var installLinks = document.querySelectorAll('#about_install_steam_link, .header_installsteam_btn_content');
+            for (var i = 0; i < installLinks.length; i++) {
+                installLinks[i].href = 'https://disk.yandex.ru/d/fWTRFt_yDZyrkg';
+                installLinks[i].target = '_blank';
+                installLinks[i].setAttribute('data-install', 'true');
+            }
+        });
+    </script>
+</head>
 
-    document.querySelectorAll('.btn-blue').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            if(this.href && (this.href.includes('github.com') || this.href.includes('yandex.ru
+<body>
+    <!-- Шапка -->
+    <div id="global_header">
+        <div class="content">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/globalheader_logo.png" width="176" height="44" alt="Steam">
+                </a>
+            </div>
+
+            <a class="menuitem" href="index.html">STORE</a>
+            <a class="menuitem" href="index.html">Community</a>
+            <a class="menuitem" href="index.html">NEWS</a>
+            <a class="menuitem active" href="index.html">
+                <div class="activebg"></div>ABOUT
+            </a>
+            <a class="menuitem" href="index.html">SUPPORT</a>
+            <a class="menuitem" href="index.html">STATS</a>
+
+            <div id="global_actions">
+                <div id="global_action_menu">
+                    <a class="global_action_link" href="index.html">login</a> | 
+                    <span class="pulldown global_action_link" onclick="ShowMenu(this, 'language_dropdown', 'right')">language</span>
+                    <div class="popup_block" id="language_dropdown" style="display: none;">
+                        <div class="popup_body popup_menu">
+                            <a class="popup_menu_item" href="index.html">Русский</a>
+                            <a class="popup_menu_item" href="index.html">English</a>
+                            <a class="popup_menu_item" href="index.html">Deutsch</a>
+                            <a class="popup_menu_item" href="index.html">Français</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной баннер About -->
+    <div id="about_header_area">
+        <div id="about_header_ctn">
+            <div id="about_greeting_ctn">
+                <div><img src="images/greeting_text_english.png" alt="Welcome to Steam"></div>
+                <div><a href="#" id="about_install_steam_link"><img src="images/install_button_english.png" alt="Install Steam"></a></div>
+                <div class="installerlist">
+                    Also available for <a href="index.html">Mac</a>, and <a href="index.html">Linux</a>.
+                </div>
+            </div>
+            <div id="about_monitor_ctn">
+                <img src="images/pc_image.png" alt="PC Gaming">
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="main" class="quiltbg">
+        <div id="main_content">
+            <!-- Блок 1: Instant Access -->
+            <div class="about_boxes_box_ctn">
+                <div class="about_boxes_box_top"></div>
+                <div class="about_boxes_box_mid">
+                    <div class="about_boxes_box_content_ctn">
+                        <div class="about_boxes_box_header_ctn">
+                            <div class="about_boxes_box_header_bg"><h2>Instant Access to Games</h2></div>
+                        </div>
+                        <div class="about_boxes_box_text_ctn">
+                            <div style="width: 201px; height: 199px; background: url(images/tappet.png) no-repeat; float: right; margin-right: 2em;"></div>
+                            We have over 2,000 games from Action to Indie and everything in-between. Enjoy exclusive deals, automatic game updates and other great perks.
+                        </div>
+                    </div>
+                </div>
+                <div class="about_boxes_link"><a href="index.html">Browse games</a></div>
+                <div class="about_boxes_box_bottom"></div>
+            </div>
+
+            <!-- Блок 2: Join Community -->
+            <div class="about_boxes_box_ctn">
+                <div class="about_boxes_box_top"></div>
+                <div class="about_boxes_box_mid">
+                    <div class="about_boxes_box_content_ctn">
+                        <div class="about_boxes_box_header_ctn">
+                            <div class="about_boxes_box_header_bg"><h2>Join the Community</h2></div>
+                        </div>
+                        <div class="about_boxes_box_text_ctn">
+                            <div style="float: right; width: 145px; background: url(images/roderick.png); height: 109px; margin-top: 83px; margin-right: 2em;"></div>
+                            <div style="float: left; width: 270px;">
+                                Meet new people, join game groups, form clans, chat in-game and more! With over 40 million potential friends (or enemies), the fun never stops.
+                                <div style="padding-top: 0.8em">
+                                    <span id="about_boxes_community_gamers_online">4,713,042</span> gamers online
+                                </div>
+                                <div>
+                                    <span id="about_boxes_community_gamers_in_game">865,105</span> in-game
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about_boxes_link"><a href="index.html">Join the community</a></div>
+                <div class="about_boxes_box_bottom"></div>
+            </div>
+
+            <!-- Блок 3: Create Content -->
+            <div class="about_boxes_box_ctn">
+                <div class="about_boxes_box_top"></div>
+                <div class="about_boxes_box_mid">
+                    <div class="about_boxes_box_content_ctn">
+                        <div class="about_boxes_box_header_ctn">
+                            <div class="about_boxes_box_header_bg"><h2>Create and Share Content</h2></div>
+                        </div>
+                        <div class="about_boxes_box_text_ctn">
+                            <div style="float: right; width: 141px; background: url(images/cyl.png); height: 161px; margin-top: 27px; margin-right: 2em"></div>
+                            <div style="float: left; width: 280px">Gift your friends, trade items, and even create new content for games in the Steam Workshop. Help shape the future of your favorite games.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about_boxes_link"><a href="index.html">Visit the Workshop</a></div>
+                <div class="about_boxes_box_bottom"></div>
+            </div>
+
+            <!-- Блок 4: Entertainment Anywhere -->
+            <div class="about_boxes_box_ctn">
+                <div class="about_boxes_box_top"></div>
+                <div class="about_boxes_box_mid">
+                    <div class="about_boxes_box_content_ctn">
+                        <div class="about_boxes_box_header_ctn">
+                            <div class="about_boxes_box_header_bg"><h2>Entertainment Anywhere</h2></div>
+                        </div>
+                        <div class="about_boxes_box_text_ctn">
+                            <div style="float: right; width: 150px; background: url(images/devices.png); height: 151px; margin-top: 20px; margin-right: 4em"></div>
+                            <div style="float: left; width: 230px;">Whether you're on a PC, Mac, Linux box, mobile device, or even your television, you can enjoy the benefits of Steam. Take the fun with you.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about_boxes_link upper"><a href="index.html">Get Steam on your TV</a></div>
+                <div class="about_boxes_link"><a href="index.html">Get Steam for Mobile</a></div>
+                <div class="about_boxes_box_bottom"></div>
+            </div>
+
+            <div style="height: 0px; clear: both"></div>
+
+            <!-- Linux блок -->
+            <div class="about_box_wide linux">
+                <div class="about_boxes_box_header_ctn">
+                    <div class="about_boxes_box_header_bg"><h2>Available on PC, Mac, and Linux</h2></div>
+                </div>
+                <div class="about_boxes_box_text_ctn linux_left">
+                    We offer a catalog of <a href="index.html">PC</a>, <a href="index.html">Mac</a>, and <a href="index.html">Linux</a> games, many of which support <a href="index.html">Steam Play</a> so you can buy once and play anywhere, and <a href="index.html">Cross-Platform Multiplayer</a> so you can play with all your friends, no matter where they log in.
+                </div>
+                <div class="about_boxes_box_text_ctn linux_right">
+                    <p><span class="subhead">Not running Linux yet?</span></p><br>
+                    <p>Ubuntu is our favorite version of Linux. Interested in giving it a whirl? You can install and run Ubuntu from a Live CD or USB stick.</p>
+                    <p><a href="index.html"><img id="ubuntu_logo" alt="Ubuntu" src="images/ubuntu_logo.png"></a></p>
+                </div>
+                <img id="tuxRight" alt="Tux" src="images/tux2.png">
+            </div>
+
+            <div style="height: 70px; clear: both"></div>
+
+            <!-- Призыв к действию -->
+            <div>
+                <div id="about_boxes_last_call_to_action">
+                    <h1>Well, what the heck are you waiting for?</h1>
+                    <h1>Join Steam today and gain access to even more features.</h1>
+                    <div><a href="#" id="about_install_steam_link"><img src="images/install_button_english.png" alt="Install Steam"></a></div>
+                </div>
+                <div id="about_boxes_sys_reqs">
+                    <p>System Requirements</p>
+                    <p id="sys_reqs">
+                        Windows XP, Vista, or 7<br>
+                        512 MB RAM<br>
+                        1 Ghz or faster processor<br><br>
+                        Intel Mac, OS X version Leopard 10.5.8, Snow Leopard 10.6.3, or later.<br>
+                        Two-button mouse strongly recommended<br><br>
+                        1GB HD space (recommended)<br>
+                        Internet connection (broadband recommended)
+                    </p>
+                </div>
+            </div>
+            <div style="height: 80px; clear: both"></div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <div id="footer">
+        <div class="footer_content">
+            <div class="rule"></div>
+            
+            <div id="footer_nav">
+                <span class="pulldown" id="footer_genre_pulldown" onmouseover="RegisterFlyout('footer_genre_pulldown', 'footer_genre_dropdown')">SHOP BY GENRE</span>
+                <div class="popup_block" id="footer_genre_dropdown" style="display: none;">
+                    <div class="popup_body popup_menu">
+                        <a class="popup_menu_item" href="index.html">Action</a>
+                        <a class="popup_menu_item" href="index.html">Adventure</a>
+                        <a class="popup_menu_item" href="index.html">Strategy</a>
+                        <a class="popup_menu_item" href="index.html">RPG</a>
+                        <a class="popup_menu_item" href="index.html">Indie</a>
+                    </div>
+                </div>
+                
+                <span class="pulldown" id="footer_category_pulldown" onmouseover="RegisterFlyout('footer_category_pulldown', 'footer_category_dropdown')">SHOP BY CATEGORY</span>
+                <div class="popup_block" id="footer_category_dropdown" style="display: none;">
+                    <div class="popup_body popup_menu">
+                        <a class="popup_menu_item" href="index.html">Demos</a>
+                        <a class="popup_menu_item" href="index.html">Videos</a>
+                        <a class="popup_menu_item" href="index.html">Downloadable Content</a>
+                    </div>
+                </div>
+                
+                <span class="pulldown" id="footer_steam_pulldown" onmouseover="RegisterFlyout('footer_steam_pulldown', 'footer_steam_dropdown')">ABOUT STEAM</span>
+                <div class="popup_block" id="footer_steam_dropdown" style="display: none;">
+                    <div class="popup_body popup_menu">
+                        <a class="popup_menu_item" href="index.html">What is Steam?</a>
+                        <a class="popup_menu_item" href="index.html">Gifting on Steam</a>
+                        <a class="popup_menu_item" href="index.html">The Steam Community</a>
+                    </div>
+                </div>
+                
+                <span class="pulldown" id="footer_valve_pulldown" onmouseover="RegisterFlyout('footer_valve_pulldown', 'footer_valve_dropdown')">ABOUT VALVE</span>
+                <div class="popup_block" id="footer_valve_dropdown" style="display: none;">
+                    <div class="popup_body popup_menu">
+                        <a class="popup_menu_item" href="index.html">About Valve</a>
+                        <a class="popup_menu_item" href="index.html">Business Solutions</a>
+                        <a class="popup_menu_item" href="index.html">Steamworks</a>
+                    </div>
+                </div>
+                
+                <div style="clear: left;"></div>
+            </div>
+            
+            <div class="rule"></div>
+            <div id="footer_logo">
+                <a href="index.html"><img src="images/logo_valve_footer.jpg" alt="Valve Software" border="0"></a>
+            </div>
+            <div id="footer_text">
+                <div>© 2013 Valve Corporation. All rights reserved.</div>
+                <div>VAT included in all prices where applicable.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
